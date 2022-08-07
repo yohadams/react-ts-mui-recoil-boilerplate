@@ -28,6 +28,11 @@ const getTheme = (mode: PaletteMode) => ({
   },
   palette: {
     mode,
+    ...(mode === "dark" && {
+      background: {
+        default: "#333",
+      },
+    }),
   },
 });
 

@@ -5,7 +5,7 @@ export type ThemeState = { mode: PaletteMode };
 
 export const themeState = atom<ThemeState>({
   key: "theme",
-  default: { mode: "light" },
+  default: { mode: "dark" },
 });
 
 export const useThemeState = () => useRecoilValue(themeState);
