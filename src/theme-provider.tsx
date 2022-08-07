@@ -1,17 +1,14 @@
 import type { PaletteMode } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import {
-  createTheme,
-  ThemeProvider,
-} from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { FunctionComponent, ReactNode } from "react";
 
 import { useThemeState } from "./recoil/theme";
 
-declare module '@mui/material/styles' {
-    interface Theme {}
-    interface ThemeOptions {}
-  }
+declare module "@mui/material/styles" {
+  interface Theme {}
+  interface ThemeOptions {}
+}
 
 const getTheme = (mode: PaletteMode) => ({
   components: {
@@ -32,7 +29,7 @@ const getTheme = (mode: PaletteMode) => ({
   palette: {
     mode,
   },
-})
+});
 
 export const theme = (mode: PaletteMode) => createTheme(getTheme(mode));
 
@@ -40,13 +37,17 @@ interface AppThemeProviderProps {
   children: ReactNode;
 }
 
-export const AppThemeProvider: FunctionComponent<AppThemeProviderProps> = ({ children }) => {
+export const AppThemeProvider: FunctionComponent<AppThemeProviderProps> = ({
+  children,
+}) => {
   const themeState = useThemeState();
-  
-  return <ThemeProvider theme={theme(themeState.mode)}>
+
+  return (
+    <ThemeProvider theme={theme(themeState.mode)}>
       <>
-      <CssBaseline />
-      {children}
+        <CssBaseline />
+        {children}
       </>
-    </ThemeProvider>;
-}
+    </ThemeProvider>
+  );
+};
